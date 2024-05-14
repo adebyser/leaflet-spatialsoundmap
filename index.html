@@ -1,0 +1,50 @@
+<html>
+  <head>
+
+    <title>Leaflet Spatial Sound Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
+  </head>
+
+  <body>
+    
+    <div id="mapid" style="height: 100%;"></div>
+
+    <script>
+
+      var mymap = L.map('mapid').setView([49.263081, -123.156133], 12);
+
+      var OpenStreetMap_BZH = L.tileLayer('https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png', {
+      attribution: 'Map Tiles By <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>',
+      subdomains: 'abcd',
+      minZoom: 0,
+      maxZoom: 20,
+      ext: 'png',
+      scrollWheelZoom: 'center',
+    }).addTo(mymap);
+
+      var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+	  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	  subdomains: 'abcd',
+      maxZoom: 20
+    }).addTo(mymap);
+    
+        var pacificspirit = L.marker([49.269333, -123.233569]).addTo(mymap).bindPopup('<h3>UBC Forest (Pacific Spirit Park)</h3><audio controls><source src="/MDIA470_SpatialAudio_PacificSpiritTrail_April2024.mp3" type="audio/mpeg"></audio>');
+        var chinatown = L.marker([49.280382, -123.100046]).addTo(mymap).bindPopup('<h3>Lunar New Year (Chinatown)</h3><audio controls><source src="/MDIA470_SpatialAudio_LunarNewYear_April2024.mp3" type="audio/mpeg"></audio>');
+        var stanleypark = L.marker([49.297269, -123.141607]).addTo(mymap).bindPopup('<h3>Stanley Park</h3><audio controls><source src="/MDIA470_SpatialAudio_StanleyPark_April2024.mp3" type="audio/mpeg"></audio>');
+        var rogersarena = L.marker([49.277592, -123.107849]).addTo(mymap).bindPopup('<h3>Canucks Game (Rogers Arena)</h3><audio controls><source src="/MDIA470_SpatialAudio_RogersArena_April2024.mp3" type="audio/mpeg"></audio>');
+        var waterfrontstation = L.marker([49.28562, -123.11186]).addTo(mymap).bindPopup('<h3>TransLink Journey (Waterfront Station)</h3><audio controls><source src="/MDIA470_SpatialAudio_VancouverTransit_TransLink_April2024.mp3" type="audio/mpeg"></audio>');
+        var downtowneastside = L.marker([49.283195, -123.099585]).addTo(mymap).bindPopup('<h3>Downtown Eastside (Powell & Main)</h3><audio controls><source src="/MDIA470_SpatialAudio_DowntownEastside_April2024.mp3" type="audio/mpeg"></audio>');
+
+    </script>
+  </body>
+</html>
